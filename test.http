@@ -1,0 +1,84 @@
+### -----------------ADMIN-------------------
+
+### Register Admin
+POST http://localhost:8080/users/register
+Content-Type: application/json
+
+{
+  "name": "Manpreet",
+  "email": "admin@gmail.com",
+  "password": "1234",
+  "role": "ROLE_ADMIN"
+}
+
+
+### ADMIN TOKEN
+POST http://localhost:8080/users/login
+Content-Type: application/json
+
+{
+  "email": "admin@gmail.com",
+  "password": "1234"
+}
+
+### ---------------------------USER-------------------
+### REGISTER USER
+POST http://localhost:8080/users/register
+Content-Type: application/json
+
+{
+  "name": "Manpreet",
+  "email": "user@gmail.com",
+  "password": "1234",
+  "role": "ROLE_USER"
+}
+
+### Login (user TOKEN)
+POST http://localhost:8080/users/login
+Content-Type: application/json
+
+{
+  "email": "user@gmail.com",
+  "password": "1234"
+}
+
+### ---------------------------------------------QUESTIONS-----------------------------------------
+
+
+### QUESTIONS
+
+### Add Question (Protected)
+POST http://localhost:8080/questions
+Content-Type: application/json
+Authorization: Bearer TOKEN
+
+{
+  "title": "Test",
+  "description": "Test",
+  "topic": "Java",
+  "difficulty": "Easy",
+  "correctAnswer": "Test"
+}
+
+### Get All Questions (Protected)
+GET http://localhost:8080/questions
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJpYXQiOjE3NzY4NTUwMzQsImV4cCI6MTc3Njg1ODYzNH0.XfYmVuEvp2nplucXVxoM2ArLptpjPp6RSped_Jflhc4
+
+
+### Submit Attempt (Protected)
+POST http://localhost:8080/attempts
+Content-Type: application/json
+Authorization: Bearer TOKEN
+
+{
+  "userId": 1,
+  "questionId": 1,
+  "userAnswer": "Java is an object-oriented programming language"
+}
+
+
+### PROFILE
+
+### Get Logged-in User (Protected)
+GET http://localhost:8080/users/profile
+Authorization: Bearer TOKEN
