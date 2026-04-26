@@ -82,3 +82,40 @@ Authorization: Bearer TOKEN
 ### Get Logged-in User (Protected)
 GET http://localhost:8080/users/profile
 Authorization: Bearer TOKEN
+
+##### live testing link: https://backend-quiz-app.onrender.com
+
+
+### REGISTER USER
+POST https://interview-backend-3n8v.onrender.com/users/register
+Content-Type: application/json
+
+{
+  "name": "Manpreet",
+  "email": "manpreet@gmail.com",
+  "password": "1234",
+  "role": "ROLE_USER"
+}
+
+### Login (user TOKEN)
+POST https://interview-backend-3n8v.onrender.com/users/login
+Content-Type: application/json
+
+{
+  "email": "manpreet@gmail.com",
+  "password": "1234"
+}
+
+### GET QUESTIONS
+GET https://interview-backend-3n8v.onrender.com/questions
+Authorization: Bearer YOUR_TOKEN
+
+### Add Question (Protected)
+POST https://interview-backend-3n8v.onrender.com/questions
+Authorization: Bearer YOUR_ADMIN_TOKEN
+Content-Type: application/json
+
+{
+  "title": "What is Java?",
+  "description": "Explain OOP in Java"
+}
