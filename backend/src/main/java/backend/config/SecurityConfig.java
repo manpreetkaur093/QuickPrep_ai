@@ -35,6 +35,20 @@ public class SecurityConfig {
         this.jwtFilter = jwtFilter;
     }
 
+    @Bean
+    public org.springframework.web.cors.CorsConfigurationSource corsConfigurationSource() {
+        org.springframework.web.cors.CorsConfiguration configuration = new org.springframework.web.cors.CorsConfiguration();
+
+        configuration.setAllowedOrigins(java.util.List.of("http://localhost:5173"));
+        configuration.setAllowedMethods(java.util.List.of("*"));
+        configuration.setAllowedHeaders(java.util.List.of("*"));
+
+        org.springframework.web.cors.UrlBasedCorsConfigurationSource source = new org.springframework.web.cors.UrlBasedCorsConfigurationSource();
+
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
+    }
+
     // Custom 401 response
     @Bean
     public AuthenticationEntryPoint authenticationEntryPoint() {
@@ -52,6 +66,9 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http
+
+                .cors(cors -> {})
+
                 // Disable CSRF
                 .csrf(csrf -> csrf.disable())
 
@@ -80,7 +97,7 @@ public class SecurityConfig {
                         .hasAuthority("ROLE_ADMIN")
 
                         .anyRequest().authenticated())
-                //  JWT filter
+                // JWT filter
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
