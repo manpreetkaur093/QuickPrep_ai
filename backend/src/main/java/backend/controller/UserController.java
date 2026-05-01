@@ -23,9 +23,16 @@ public class UserController {
     @PostMapping("/register")
     public UserResponse register(@RequestBody User user) {
 
+        //  Encode password
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+        //  set default role
+        user.setRole("ROLE_USER");
+
+        //  Save user
         User savedUser = userRepository.save(user);
 
+        //  Response (don’t send password back)
         UserResponse response = new UserResponse();
         response.setId(savedUser.getId());
         response.setName(savedUser.getName());

@@ -1,52 +1,43 @@
 import { useState } from "react";
 import { loginUser } from "../services/api";
+import { Link } from "react-router-dom";
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [form, setForm] = useState({ email: "", password: "" });
 
- const handleLogin = async () => {
-  try {
-    const token = await loginUser({ email, password });
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
-    console.log("TOKEN RECEIVED:", token);
+  const handleLogin = async () => {
+    try {
+      const res = await loginUser(form);
 
-    if (!token || token.length < 20) {
-      throw new Error("Invalid token");
+      if (res.role === "ROLE_ADMIN") {
+        window.location.href = "/admin";
+      } else {
+        window.location.href = "/questions";
+      }
+    } catch {
+      alert("Login failed ❌");
     }
-
-    localStorage.setItem("token", token);
-
-    alert("Login successful 🚀");
-    window.location.href = "/questions";
-
-  } catch (error) {
-    console.error("LOGIN ERROR:", error);
-    alert("Login failed ❌");
-  }
-};
+  };
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div>
       <h2>Login</h2>
 
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <br /><br />
+      <input name="email" placeholder="Email" onChange={handleChange} />
+      <br />
 
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <br /><br />
+      <input name="password" type="password" placeholder="Password" onChange={handleChange} />
+      <br />
 
       <button onClick={handleLogin}>Login</button>
+
+      <p>
+        Don’t have an account? <Link to="/register">Sign Up</Link>
+      </p>
     </div>
   );
 }
