@@ -65,11 +65,11 @@ export const getQuestions = async () => {
 
 
 export const generateAI = async (form) => {
-  const res = await fetch("http://localhost:8080/ai/generate", {
+  const res = await fetch(`${BASE_URL}/ai/generate`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${localStorage.getItem("token")}`, // ✅ ADD THIS
+      Authorization: `Bearer ${localStorage.getItem("token")}`, 
     },
     body: JSON.stringify(form),
   });

@@ -10,7 +10,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/ai")
-@CrossOrigin("*") // allow frontend (React) to access
+@CrossOrigin("*") 
 public class AiController {
 
     @Autowired
