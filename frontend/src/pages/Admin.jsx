@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { addQuestion } from "../services/api";
+import "../styles/Admin.css";
 
 function Admin() {
   const [question, setQuestion] = useState({
@@ -31,26 +32,34 @@ function Admin() {
   };
 
   return (
-    <div>
-      <h2>Admin Panel</h2>
+    <div className="admin-page">
+      <div className="admin-card">
+        <h2 className="admin-title">Admin Panel ⚙️</h2>
 
-      <input
-        name="title"
-        placeholder="Title"
-        value={question.title}
-        onChange={handleChange}
-      />
-      <br />
+        <div className="admin-section">
+          <h3>Add New Question</h3>
 
-      <textarea
-        name="description"
-        placeholder="Description"
-        value={question.description}
-        onChange={handleChange}
-      />
-      <br />
+          <input
+            className="admin-input"
+            name="title"
+            placeholder="Enter question title"
+            value={question.title}
+            onChange={handleChange}
+          />
 
-      <button onClick={handleAdd}>Add Question</button>
+          <textarea
+            className="admin-textarea"
+            name="description"
+            placeholder="Enter question description"
+            value={question.description}
+            onChange={handleChange}
+          />
+
+          <button className="admin-btn" onClick={handleAdd}>
+            Add Question
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

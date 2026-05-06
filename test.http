@@ -83,6 +83,17 @@ Authorization: Bearer TOKEN
 GET http://localhost:8080/users/profile
 Authorization: Bearer TOKEN
 
+#### AI GENERATED QUESTIONS
+POST http://localhost:8080/ai/generate
+Content-Type: application/json
+
+{
+  "skills": "Java, Spring Boot",
+  "projects": "AI Interview Platform",
+  "experience": "Internship",
+  "technologies": "React, MySQL"
+}
+
 
 
 
@@ -97,18 +108,19 @@ Content-Type: application/json
 {
   "name": "Manpreet",
   "email": "admin@gmail.com",
-  "password": "1234",
+  "password": "admin123",
   "role": "ROLE_ADMIN"
 }
  
 
  ### ADMIN TOKEN
+
 POST https://interview-backend-3n8v.onrender.com/users/login
 Content-Type: application/json
 
 {
   "email": "admin@gmail.com",
-  "password": "1234"
+  "password": "admin123"
 }
 
 

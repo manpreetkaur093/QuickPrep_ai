@@ -1,0 +1,112 @@
+/* RESET (optional but helpful) */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* PAGE BACKGROUND */
+.admin-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #eef2ff, #f9fafb);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* CARD CONTAINER */
+.admin-card {
+  width: 100%;
+  max-width: 500px;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* TITLE */
+.admin-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 25px;
+  color: #111827;
+}
+
+/* SECTION */
+.admin-section {
+  display: flex;
+  flex-direction: column; /* 🔥 fixes horizontal alignment */
+  gap: 15px;
+}
+
+/* SUB HEADING */
+.admin-section h3 {
+  font-size: 18px;
+  color: #374151;
+}
+
+/* INPUT */
+.admin-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.admin-input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+/* TEXTAREA */
+.admin-textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  min-height: 100px;
+  resize: none;
+  transition: all 0.2s ease;
+}
+
+.admin-textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+/* BUTTON */
+.admin-btn {
+  background: linear-gradient(90deg, #2563eb, #4f46e5);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.admin-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* OPTIONAL: SMALL SCREEN RESPONSIVE */
+@media (max-width: 600px) {
+  .admin-card {
+    padding: 20px;
+  }
+
+  .admin-title {
+    font-size: 20px;
+  }
+}

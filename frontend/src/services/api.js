@@ -61,3 +61,20 @@ export const getQuestions = async () => {
 
   return res.json();
 };
+
+
+
+export const generateAI = async (form) => {
+  const res = await fetch("http://localhost:8080/ai/generate", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`, // ✅ ADD THIS
+    },
+    body: JSON.stringify(form),
+  });
+
+  if (!res.ok) throw new Error("Unauthorized");
+
+  return res.json();
+};

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { registerUser } from "../services/api";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import "../styles/common.css";
 
 function Register() {
   const [form, setForm] = useState({
@@ -8,6 +9,8 @@ function Register() {
     email: "",
     password: "",
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -17,30 +20,49 @@ function Register() {
     try {
       await registerUser(form);
       alert("Registered successfully ✅");
-      window.location.href = "/";
+      navigate("/");
     } catch {
       alert("Registration failed ❌");
     }
   };
 
   return (
-    <div>
-      <h2>Sign Up</h2>
+    <div className="page">
+      <div className="card">
+        <h2 className="title">Sign Up</h2>
 
-      <input name="name" placeholder="Name" onChange={handleChange} />
-      <br />
+        <input
+          className="input"
+          name="name"
+          placeholder="Name"
+          onChange={handleChange}
+        />
 
-      <input name="email" placeholder="Email" onChange={handleChange} />
-      <br />
+        <input
+          className="input"
+          name="email"
+          placeholder="Email"
+          onChange={handleChange}
+        />
 
-      <input name="password" type="password" placeholder="Password" onChange={handleChange} />
-      <br />
+        <input
+          className="input"
+          name="password"
+          type="password"
+          placeholder="Password"
+          onChange={handleChange}
+        />
 
-      <button onClick={handleRegister}>Register</button>
+        <button className="button" onClick={handleRegister}>
+          Register
+        </button>
 
-      <p>
-        Already have an account? <Link to="/">Login</Link>
-      </p>
+        <div className="link">
+          <p>
+            Already have an account? <Link to="/">Login</Link>
+          </p>
+        </div>
+      </div>
     </div>
   );
 }

@@ -82,7 +82,7 @@ public class SecurityConfig {
 
                 // ROLE-BASED AUTH HERE
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/users/register", "/users/login").permitAll()
+                .requestMatchers("/users/register", "/users/login", "/ai/**").permitAll()
 
                         // Swagger
                         .requestMatchers(
@@ -96,6 +96,7 @@ public class SecurityConfig {
 
                         .requestMatchers(HttpMethod.POST, "/questions")
                         .hasAuthority("ROLE_ADMIN")
+                        
 
                         .anyRequest().authenticated())
                 // JWT filter
