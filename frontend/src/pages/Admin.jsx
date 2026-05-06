@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { addQuestion } from "../services/api";
-import "../styles/Admin.css";
+import "../styles/admin.css";
 
 function Admin() {
   const [question, setQuestion] = useState({
