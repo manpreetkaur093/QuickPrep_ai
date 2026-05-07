@@ -5,11 +5,12 @@ import "./Navbar.css";
 function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [name, setName] = useState("");
+  const role = localStorage.getItem("role");
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     const storedName = localStorage.getItem("name");
-    const role = localStorage.getItem("role");
+    
 
     setIsLoggedIn(!!token);
     setName(storedName || "");
