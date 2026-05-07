@@ -10,7 +10,6 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/ai")
-@CrossOrigin("https://quickprepp-ai.onrender.com, http://localhost:5173") 
 public class AiController {
 
     @Autowired
