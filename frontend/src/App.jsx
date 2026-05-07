@@ -9,6 +9,7 @@ import AiGenerator from "./pages/AiGenerator";
 
 function App() {
   const isLoggedIn = localStorage.getItem("token");
+  const role = localStorage.getItem("role");
 
   return (
     <BrowserRouter>
@@ -27,10 +28,12 @@ function App() {
           element={isLoggedIn ? <Questions /> : <Login />}
         />
 
+
+
         {/* Admin */}
         <Route
           path="/admin"
-          element={isLoggedIn ? <Admin /> : <Login />}
+          element={isLoggedIn && role === "ROLE_ADMIN" ? <Admin /> : <Login />}
         />
 
         {/* AI PAGE (NOT protected 🔥) */}

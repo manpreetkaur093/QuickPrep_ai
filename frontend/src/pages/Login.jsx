@@ -17,11 +17,12 @@ function Login() {
     try {
       const res = await loginUser(form);
 
-      // ✅ SAVE TOKEN (MOST IMPORTANT)
+      //  SAVE TOKEN (MOST IMPORTANT)
       localStorage.setItem("token", res.token);
       localStorage.setItem("username", res.email); 
+      localStorage.setItem("role", res.role);
 
-      // ✅ Redirect properly
+      // Redirect properly
       if (res.role === "ROLE_ADMIN") {
         window.location.href = "/admin";
       } else {

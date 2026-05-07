@@ -9,6 +9,7 @@ function Navbar() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     const storedName = localStorage.getItem("name");
+    const role = localStorage.getItem("role");
 
     setIsLoggedIn(!!token);
     setName(storedName || "");
@@ -35,6 +36,12 @@ function Navbar() {
         <Link to="/" className="nav-link">
           AI Generator
         </Link>
+
+        {role === "ROLE_ADMIN" && (
+          <Link to="/admin" className="nav-link">
+            Admin Dashboard
+          </Link>
+        )}
 
         <Link to="/questions" className="nav-link">
           Questions
